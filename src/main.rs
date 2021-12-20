@@ -1,19 +1,18 @@
-mod double_cipher;
-mod single_cipher;
+mod transposition;
 
-use crate::double_cipher::double_transposition;
-// use crate::single_cipher::single_transposition;
+use crate::transposition::transposition;
 
 use clap::Parser;
 
 #[derive(Parser)]
-#[clap(name = "Double Columnar Transposition Cipher")]
+#[clap(name = "Columnar Transposition Cipher")]
 struct Opts {
+    /// Activates decryption mode
     #[clap(short, long)]
     decrypt: bool,
-    #[clap(short, long)]
+    /// The message to be encrypted/decrypted
     msg: String,
-    #[clap(short, long)]
+    /// The keyword(s) used to encrypt/decrypt
     key: String,
 }
 
@@ -21,6 +20,5 @@ struct Opts {
 fn main() {
     let opts: Opts = Opts::parse();
 
-    double_transposition(opts.decrypt, &opts.msg, &opts.key);
-    // single_transposition(opts.decrypt, &opts.msg, &opts.key);
+    transposition(opts.decrypt, &opts.msg, &opts.key);
 }
