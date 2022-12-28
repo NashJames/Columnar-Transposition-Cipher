@@ -4,11 +4,11 @@ use crate::transposition::transposition;
 
 use clap::Parser;
 
-#[derive(Parser)]
-#[clap(name = "Columnar Transposition Cipher")]
+#[derive(Parser, Debug)]
+#[command(about, version)]
 struct Opts {
     /// Activates decryption mode
-    #[clap(short, long)]
+    #[arg(short, long)]
     decrypt: bool,
     /// The message to be encrypted/decrypted
     msg: String,
